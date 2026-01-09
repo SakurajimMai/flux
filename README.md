@@ -6,7 +6,31 @@
 
 ---
 
-##  核心优势
+## 📞 定制与商业支持
+
+如果您需要：
+-   🔥 **修改 App 名称和 Logo**
+-   🎨 **定制专属 UI 主题**
+-   🚀 **增加高级功能**
+-   🛠️ **全套上架服务 (Play Store / App Store)**
+
+请通过 Telegram 联系我：👉 **[@xiaoxiaonihaoya](https://t.me/xiaoxiaonihaoya)**
+
+---
+
+## 📱 界面预览
+
+| 登录 & 注册 | 首页连接 | 状态页 |
+| :---: | :---: | :---: |
+| <img src="assets/images/screenshots/1.png" width="200"> | <img src="assets/images/screenshots/5.png" width="200"> | <img src="assets/images/screenshots/4.png" width="200"> |
+
+| 账号/侧边 | 购买套餐 |
+| :---: | :---: |
+| <img src="assets/images/screenshots/3.png" width="200"> | <img src="assets/images/screenshots/2.png" width="200"> |
+
+---
+
+## 🎉 核心优势
 
 -   **极简对接**: 真的只需要**一步**！修改 API 地址即可直接使用，告别繁琐配置。
 -   **全平台支持**: Android, iOS, Windows, macOS, Linux 全覆盖。
@@ -108,21 +132,9 @@ Future<String> getBaseUrl() async {
 
 ---
 
-## 📞 定制与商业支持
-
-如果您需要：
--   🔥 **修改 App 名称和 Logo**
--   🎨 **定制专属 UI 主题**
--   🚀 **增加高级功能**
--   🛠️ **全套上架服务 (Play Store / App Store)**
-
-请通过 Telegram 联系我：👉 **[@xiaoxiaonihaoya](https://t.me/xiaoxiaonihaoya)**
-
----
-
 ## 🔗 相关项目
 
--   [V2Board](https://github.com/v2board/v2board): 强大的 V2Ray 面板。
+-   [V2Board](https://github.com/wyx2685/v2board): 强大的 V2Ray 面板。
 
 ---
 
