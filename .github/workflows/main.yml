@@ -2,8 +2,8 @@ name: Flutter Build APK
 
 on:
   push:
-    branches: [ "main", "master" ] # 当你提交代码到 main 或 master 分支时触发
-  workflow_dispatch: # 允许你手动点击按钮触发编译
+    branches: [ "main", "master" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,19 +16,24 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17' # flux 编译通常需要 Java 17
+          java-version: '17'
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.27.0' # 建议使用稳定版本，或根据项目需求调整
+          # 修改这里：使用最新的稳定版，它肯定包含 Dart 3.9.2+
           channel: 'stable'
+          cache: true
 
       - name: Install dependencies
-        run: flutter pub get
+        run: |
+          # 强制更新依赖环境
+          flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release --no-tree-shake-icons
+        run: |
+          # --no-tree-shake-icons 是为了防止某些图标库在云端编译时报错
+          flutter build apk --release --no-tree-shake-icons
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
