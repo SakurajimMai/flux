@@ -1,42 +1,43 @@
-name: Flutter Build APK
+name: Flux Build APK
 
 on:
   push:
     branches: [ "main", "master" ]
-  workflow_dispatch:
+  workflow_dispatch: # 允许手动点击按钮开始构建
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '17' # Flutter 3.x 编译 Android 必须使用 JDK 17
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          # 修改这里：使用最新的稳定版，它肯定包含 Dart 3.9.2+
-          channel: 'stable'
+          channel: 'stable' # 强制拉取最新的稳定版 Flutter SDK
           cache: true
 
-      - name: Install dependencies
+      - name: Pre-build Clean
         run: |
-          # 强制更新依赖环境
-          flutter pub get
+          flutter clean
+          flutter pub get # 确保所有依赖（包括报错的 invite_data）被重新拉取
 
-      - name: Build APK
+      - name: Build Android APK
         run: |
-          # --no-tree-shake-icons 是为了防止某些图标库在云端编译时报错
+          # --no-tree-shake-icons 解决云端图标编译失败问题
+          # --release 生成正式版 APK
           flutter build apk --release --no-tree-shake-icons
 
-      - name: Upload APK
+      - name: Upload Release APK
         uses: actions/upload-artifact@v4
         with:
-          name: flux-app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: Flux-Release-APK
+          path: build/app/outputs/flutter-apk/app-release.apk # 产物路径
